@@ -2,17 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>am_algo_example</artifactId>
+        <groupId>com.alibaba.pai</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.alibaba.pai</groupId>
-    <artifactId>am_algo_example</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>udf_example</module>
-        <module>mr_example</module>
-        <module>graph_example</module>
-    </modules>
+    <artifactId>udf_example</artifactId>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,26 +59,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
-        <!--odps sdk-->
-        <!--<dependency>-->
-            <!--<groupId>com.aliyun.odps.internal</groupId>-->
-            <!--<artifactId>odps_tunnel_sdk</artifactId>-->
-            <!--<version>s13.0.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>com.aliyun.odps.internal</groupId>-->
-            <!--<artifactId>odps-mr-sdk</artifactId>-->
-            <!--<version>s13.0.0</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>com.aliyun.odps.internal</groupId>-->
-            <!--<artifactId>odps-api-sdk</artifactId>-->
-            <!--<version>s13.0.1-forTT</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>com.aliyun.odps</groupId>
             <artifactId>odps-sdk-udf-internal</artifactId>

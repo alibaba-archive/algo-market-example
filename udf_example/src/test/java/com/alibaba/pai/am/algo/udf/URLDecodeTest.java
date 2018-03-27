@@ -1,4 +1,4 @@
-package com.alibaba.pai.am.algo.demo;
+package com.alibaba.pai.am.algo.udf;
 
 import com.aliyun.odps.udf.UDF;
 import org.junit.Test;

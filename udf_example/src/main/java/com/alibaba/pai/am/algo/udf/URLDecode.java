@@ -1,4 +1,4 @@
-package com.alibaba.pai.am.algo.demo;
+package com.alibaba.pai.am.algo.udf;
 
 import com.aliyun.odps.udf.UDF;
 
@@ -10,7 +10,7 @@ import java.net.URLDecoder;
 
  * @author guotao.gt
 
- * @since 2016.11.08
+ * @since 2018.03.08
 
  */
 
