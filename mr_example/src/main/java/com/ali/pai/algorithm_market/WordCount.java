@@ -1,4 +1,4 @@
-package com.alibaba.pai.am.algo.mr;
+package com.ali.pai.algorithm_market;
 
 import com.aliyun.odps.data.Record;
 import com.aliyun.odps.data.TableInfo;
