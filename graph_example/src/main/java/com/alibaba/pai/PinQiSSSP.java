@@ -1,4 +1,4 @@
-package com.alibaba.pai.am.algo.graph;
+package com.alibaba.pai;
 
 
 import com.alibaba.fastjson.JSON;

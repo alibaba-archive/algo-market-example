@@ -12,7 +12,7 @@
     <artifactId>graph_example</artifactId>
     <packaging>jar</packaging>
 
-    <name>test_odps_graph</name>
+    <name>graph_example</name>
     <url>http://maven.apache.org</url>
 
     <properties>
