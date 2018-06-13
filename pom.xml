@@ -13,6 +13,7 @@
         <module>mr_example</module>
         <module>graph_example</module>
         <module>spark1_example</module>
+        <module>spark2_example</module>
     </modules>
 
     <properties>
