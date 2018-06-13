@@ -12,7 +12,7 @@
         <module>udf_example</module>
         <module>mr_example</module>
         <module>graph_example</module>
-        <module>spark_example</module>
+        <module>spark1_example</module>
     </modules>
 
     <properties>
