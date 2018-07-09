@@ -118,8 +118,7 @@ public class SimHashSpark {
          * .AnalysisException: Hive support is required to CREATE Hive TABLE (AS SELECT);;
          */
         //SparkSession sparkSession = SparkSession.builder().appName("spark sql test").getOrCreate();
-        //sparkSession.sql("CREATE TABLE IF NOT EXISTS " + outputProjectName + "." + outputTableName
-        //    + "(id STRING,hash_value STRING)");
+        //sparkSession.sql("CREATE TABLE IF NOT EXISTS " + outputProjectName + "." + outputTableNam"(id STRING,hash_value STRING)");
         ////sparkSession.stop();
 
         //1. read from table
@@ -130,7 +129,7 @@ public class SimHashSpark {
                     @Override
                     public Tuple2<String, String> call(Record v1, TableSchema v2) throws Exception {
                         System.out.println("TableSchema v2:" + gson.toJson(v2));
-                        return new Tuple2<String, String>(String.valueOf(v1.get(idCol)), String.valueOf(v1.get(contentCol)));
+                        return new Tuple2<String, String>(v1.getString(idCol), v1.getString(contentCol));
                     }
                 }, 0
             ).map(new Function<Tuple2<String, String>, Sample>() {
