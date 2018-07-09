@@ -113,10 +113,7 @@ public class SimHashSpark {
             radix = 10;
         }
 
-        /**
-         * [2] 18/07/06 23:11:23 ERROR ApplicationMaster: User class threw exception: org.apache.spark.sql
-         * .AnalysisException: Hive support is required to CREATE Hive TABLE (AS SELECT);;
-         */
+        // create output table
         SparkSession sparkSession = SparkSession.builder().appName("spark sql test").getOrCreate();
         sparkSession.sql("CREATE TABLE IF NOT EXISTS " + outputProjectName + "." + outputTableName+"(id STRING,hash_value STRING)");
         //sparkSession.stop();
