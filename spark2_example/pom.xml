@@ -12,15 +12,14 @@
     <artifactId>spark2_example</artifactId>
 
     <properties>
-        <odps.spark.plugin.version>2.0.6</odps.spark.plugin.version>
+        <cupid.sdk.version>3.3.2-hotfix1</cupid.sdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <scala.version>2.11.8</scala.version>
         <scala.binary.version>2.11</scala.binary.version>
         <PermGen>512m</PermGen>
         <MaxPermGen>1024m</MaxPermGen>
-        <spark.version>2.2.1-odps0.29.0</spark.version>
-        <hadoop.aliyun.fs.version>3.2.0</hadoop.aliyun.fs.version>
+        <spark.version>2.3.0</spark.version>
     </properties>
 
     <dependencies>
@@ -51,7 +50,7 @@
         <dependency>
             <groupId>com.aliyun.odps</groupId>
             <artifactId>hadoop-fs-oss</artifactId>
-            <version>${hadoop.aliyun.fs.version}</version>
+            <version>${cupid.sdk.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.hadoop</groupId>
@@ -64,24 +63,12 @@
             <artifactId>spark-core_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>net.jpountz.lz4</groupId>
-                    <artifactId>lz4</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>odps-support_${scala.binary.version}</artifactId>
-            <version>${spark.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.aliyun.odps</groupId>
-            <artifactId>odps-spark-datasource</artifactId>
-            <version>${odps.spark.plugin.version}</version>
+            <artifactId>odps-spark-datasource_${scala.binary.version}</artifactId>
+            <version>${cupid.sdk.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>net.jpountz.lz4</groupId>
@@ -92,8 +79,8 @@
 
         <dependency>
             <groupId>com.aliyun.odps</groupId>
-            <artifactId>odps-spark-client</artifactId>
-            <version>${odps.spark.plugin.version}</version>
+            <artifactId>odps-spark-client_${scala.binary.version}</artifactId>
+            <version>${cupid.sdk.version}</version>
         </dependency>
 
         <dependency>
@@ -122,11 +109,22 @@
         <dependency>
             <groupId>com.aliyun.odps</groupId>
             <artifactId>cupid-sdk</artifactId>
-            <version>1.8.2</version>
+            <version>${cupid.sdk.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>tbmirror</id>
+            <name>taobao mirror</name>
+            <url>http://mvnrepo.alibaba-inc.com/mvn/repository</url>
+        </repository>
+        <repository>
+            <id>tbmirror-snapshots</id>
+            <name>taobao mirror snapshots</name>
+            <url>http://mvnrepo.alibaba-inc.com/mvn/repository</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
