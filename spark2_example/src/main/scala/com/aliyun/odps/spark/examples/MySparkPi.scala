@@ -7,7 +7,7 @@ import scala.math.random
 /** Computes an approximation to pi */
 object MySparkPi {
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("Spark Pi")
+    val conf = new SparkConf().setAppName("My Spark Pi")
     val sc = new SparkContext(conf)
     try {
       val slices = if (args.length > 0) args(0).split("=")(1).toInt else 2
