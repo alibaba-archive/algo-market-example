@@ -12,7 +12,7 @@
     <artifactId>spark2_example</artifactId>
 
     <properties>
-        <cupid.sdk.version>3.3.2-hotfix1</cupid.sdk.version>
+        <cupid.sdk.version>3.3.4</cupid.sdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <scala.version>2.11.8</scala.version>

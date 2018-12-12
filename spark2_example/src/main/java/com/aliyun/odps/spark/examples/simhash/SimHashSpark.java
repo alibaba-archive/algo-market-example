@@ -15,6 +15,7 @@ import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.api.java.function.VoidFunction3;
 import org.apache.spark.sql.SparkSession;
 import scala.Tuple2;
+import scala.Tuple3;
 
 import java.util.List;
 import java.util.Map;
@@ -115,7 +116,7 @@ public class SimHashSpark {
 
         // create output table
         SparkSession sparkSession = SparkSession.builder().appName("spark sql test").getOrCreate();
-        sparkSession.sql("CREATE TABLE IF NOT EXISTS " + outputProjectName + "." + outputTableName+"(id STRING,hash_value STRING)");
+        sparkSession.sql("CREATE TABLE IF NOT EXISTS " + outputProjectName + "." + outputTableName+"(id STRING,content STRING,hash_value STRING)");
         //sparkSession.stop();
 
         //1. read from table
@@ -125,7 +126,7 @@ public class SimHashSpark {
                 new Function2<Record, TableSchema, Tuple2<String, String>>() {
                     @Override
                     public Tuple2<String, String> call(Record v1, TableSchema v2) throws Exception {
-                        System.out.println("TableSchema v2:" + gson.toJson(v2));
+//                        System.out.println("TableSchema v2:" + gson.toJson(v2));
                         return new Tuple2<String, String>(v1.getString(idCol), v1.getString(contentCol));
                     }
                 }, 0
@@ -143,24 +144,27 @@ public class SimHashSpark {
         System.out.println("record 0: "+inputSamples.get(0));
 
         //2.save to table
-        JavaPairRDD<String, String> rdd1 = ctx.parallelize(inputSamples, 1).mapToPair(
-            new PairFunction<Sample, String, String>() {
+        JavaPairRDD<String, Sample> rdd1 = ctx.parallelize(inputSamples, 1).mapToPair(
+            new PairFunction<Sample, String, Sample>() {
                 @Override
-                public Tuple2<String, String> call(Sample sample) throws Exception {
+                public Tuple2<String, Sample> call(Sample sample) throws Exception {
                     String simHash = SimHash.simHash(sample.getContent(), bitLength, radix);
-                    return new Tuple2<String, String>(sample.getId(), simHash.toString());
+                    sample.setHashValue(simHash.toString());
+                    return new Tuple2<String, Sample>(sample.getId(), sample);
                 }
             }
         );
 
-        VoidFunction3<Tuple2<String, String>, Record, TableSchema> saveTransfer =
-            new VoidFunction3<Tuple2<String, String>, Record, TableSchema>() {
+        VoidFunction3<Tuple2<String, Sample>, Record, TableSchema> saveTransfer =
+            new VoidFunction3<Tuple2<String, Sample>, Record, TableSchema>() {
                 @Override
-                public void call(Tuple2<String, String> v1, Record v2, TableSchema v3) throws Exception {
+                public void call(Tuple2<String, Sample> v1, Record v2, TableSchema v3) throws Exception {
                     v2.set(0, v1._1());
-                    v2.set(1, v1._2());
+                    v2.set(1, v1._2().getContent());
+                    v2.set(2, v1._2().getHashValue());
                 }
             };
+
         javaOdpsOps.saveToTable(outputProjectName, outputTableName, "", JavaPairRDD.toRDD(rdd1), saveTransfer, true);
 
         ctx.stop();
