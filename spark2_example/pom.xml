@@ -48,6 +48,27 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.aliyun.odps</groupId>-->
+            <!--<artifactId>cupid-sdk</artifactId>-->
+            <!--<version>${cupid.sdk.version}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.aliyun.odps</groupId>
+            <artifactId>odps-sdk-core</artifactId>
+            <version>0.30.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.aliyun.odps</groupId>
             <artifactId>hadoop-fs-oss</artifactId>
             <version>${cupid.sdk.version}</version>
@@ -57,12 +78,6 @@
                     <artifactId>hadoop-common</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_${scala.binary.version}</artifactId>
-            <version>${spark.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -75,12 +90,6 @@
                     <artifactId>lz4</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.aliyun.odps</groupId>
-            <artifactId>odps-spark-client_${scala.binary.version}</artifactId>
-            <version>${cupid.sdk.version}</version>
         </dependency>
 
         <dependency>
@@ -106,12 +115,7 @@
             <artifactId>jackson-core-asl</artifactId>
             <version>1.9.13</version>
         </dependency>
-        <dependency>
-            <groupId>com.aliyun.odps</groupId>
-            <artifactId>cupid-sdk</artifactId>
-            <version>${cupid.sdk.version}</version>
-            <scope>provided</scope>
-        </dependency>
+
     </dependencies>
     <repositories>
         <repository>
