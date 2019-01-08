@@ -5,8 +5,10 @@ import sys
 
 
 if __name__ == '__main__':
+#get the user define params, split by '='
     for arg in sys.argv:
         print(arg)
+
     spark = SparkSession.builder.appName("spark sql").getOrCreate()
 
     df = spark.sql("select * from dual")
