@@ -62,7 +62,7 @@
         <dependency>
             <groupId>com.aliyun.odps</groupId>
             <artifactId>odps-sdk-udf-internal</artifactId>
-            <version>0.25.1</version>
+            <version>0.30.9</version>
         </dependency>
 
     </dependencies>
