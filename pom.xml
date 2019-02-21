@@ -10,9 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>udf_example</module>
-        <module>mr_example</module>
-        <module>graph_example</module>
-        <module>spark1_example</module>
         <module>spark2_example</module>
     </modules>
 
